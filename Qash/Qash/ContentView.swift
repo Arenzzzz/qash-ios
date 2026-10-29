@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $mostrandoFormulario) {
-                Text("Aquí irá el formulario")
+                NuevoMovimientoView()
             }
         } detail: {
             Text("Select an item")
