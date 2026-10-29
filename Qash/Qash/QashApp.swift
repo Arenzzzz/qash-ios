@@ -1,10 +1,3 @@
-//
-//  QashApp.swift
-//  Qash
-//
-//  Created by Arenz Pelaez on 28/10/26.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -17,12 +10,14 @@ struct QashApp: App {
             Item.self,
             Movimiento.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        // Guarda los datos en el disco del iPhone
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false) // 'true' borraría al cerrar la app
+        
+        // Crea la base de datos con manejo de errores
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("No se pudo crear 'ModelContainer': \(error)")
         }
     }()
 
@@ -30,6 +25,6 @@ struct QashApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(sharedModelContainer) // Comparte la base de datos con todas las pantallas
     }
 }
