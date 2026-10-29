@@ -5,6 +5,7 @@ import SwiftData    // Conexión de datos
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext // Conexión a la base de datos
     @Query private var movimientos: [Movimiento] // Trae automáticamente todos los movimientos
+    @State private var mostrandoFormulario = false
 
     // --- DIBUJO EN PANTALLA ---
     var body: some View {
@@ -27,10 +28,15 @@ struct ContentView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button {
+                        mostrandoFormulario = true
+                    } label: {
+                        Label("Agregar", systemImage: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $mostrandoFormulario) {
+                Text("Aquí irá el formulario")
             }
         } detail: {
             Text("Select an item")
