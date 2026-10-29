@@ -4,18 +4,19 @@ import SwiftData    // Conexión de datos
 // --- PANTALLA ---
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext // Conexión a la base de datos
-    @Query private var items: [Item] // Trae automáticamente todos los Ítems
+    @Query private var movimientos: [Movimiento] // Trae automáticamente todos los movimientos
 
     // --- DIBUJO EN PANTALLA ---
     var body: some View {
         NavigationSplitView {
             // 
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                ForEach(movimientos) { movimiento in
+                    HStack {
+                        Image(systemName: movimiento.categoria.icono)
+                        Text(movimiento.categoria.rawValue)
+                        Spacer()
+                        Text("Q\(movimiento.monto)")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -37,15 +38,15 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+            let newMovimiento = Movimiento(monto: 35.00, nota: "Almuerzo", fecha: Date(), esIngreso: false, categoria: .comida)
+            modelContext.insert(newMovimiento)
         }
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(items[index])
+                modelContext.delete(movimientos[index])
             }
         }
     }
@@ -53,5 +54,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Movimiento.self, inMemory: true)
 }

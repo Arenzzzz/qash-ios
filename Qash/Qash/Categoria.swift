@@ -9,6 +9,7 @@ enum Categoria: String, Codable, CaseIterable {
     case prestamos = "Préstamos"
     case gustos = "Gustos"
     case otros = "Otros"
+    case emergencias = "Emergencias"
     
     // Ingresos
     case salario = "Salario"
@@ -23,6 +24,7 @@ enum Categoria: String, Codable, CaseIterable {
         case .prestamos: return "banknote.fill"
         case .gustos: return "heart.circle"
         case .otros: return "ellipsis"
+        case .emergencias: return "cross.case.fill"
             
         case .salario: return "briefcase.fill"
         case .extras: return "star.fill"

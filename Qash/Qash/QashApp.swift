@@ -7,7 +7,6 @@ struct QashApp: App {
         
         // Lista de tablas de la base de datos
         let schema = Schema([
-            Item.self,
             Movimiento.self
         ])
         // Guarda los datos en el disco del iPhone
