@@ -30,4 +30,8 @@ enum Categoria: String, Codable, CaseIterable {
         case .extras: return "star.fill"
         }
     }
+    
+    var esIngreso: Bool {
+        return self == .salario || self == .extras
+    }
 }

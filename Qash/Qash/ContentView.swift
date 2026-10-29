@@ -39,7 +39,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newMovimiento = Movimiento(monto: 3000.00, nota: "Sueldo", fecha: Date(), esIngreso: true, categoria: .salario)
+            let newMovimiento = Movimiento(monto: 3000.00, nota: "Sueldo", fecha: Date(), categoria: .salario)
             modelContext.insert(newMovimiento)
         }
     }

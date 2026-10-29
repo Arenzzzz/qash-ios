@@ -6,15 +6,14 @@ final class Movimiento {
     var monto: Double
     var nota: String
     var fecha: Date
-    var esIngreso: Bool
     
     var categoria: Categoria = Categoria.otros
+    var esIngreso: Bool {categoria.esIngreso}
     
-    init(monto: Double, nota: String, fecha: Date, esIngreso: Bool, categoria: Categoria) {
+    init(monto: Double, nota: String, fecha: Date, categoria: Categoria) {
         self.monto = monto
         self.nota = nota
         self.fecha = fecha
-        self.esIngreso = esIngreso
         self.categoria = categoria
     }
 }
