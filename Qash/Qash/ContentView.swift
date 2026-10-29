@@ -1,19 +1,15 @@
-//
-//  ContentView.swift
-//  Qash
-//
-//  Created by Arenz Pelaez on 28/10/26.
-//
+import SwiftUI  // Dibuja la interfaz
+import SwiftData    // Conexión de datos
 
-import SwiftUI
-import SwiftData
-
+// --- PANTALLA ---
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Environment(\.modelContext) private var modelContext // Conexión a la base de datos
+    @Query private var items: [Item] // Trae automáticamente todos los Ítems
 
+    // --- DIBUJO EN PANTALLA ---
     var body: some View {
         NavigationSplitView {
+            // 
             List {
                 ForEach(items) { item in
                     NavigationLink {

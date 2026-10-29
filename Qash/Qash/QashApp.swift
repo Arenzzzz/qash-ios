@@ -11,8 +11,11 @@ import SwiftData
 @main
 struct QashApp: App {
     var sharedModelContainer: ModelContainer = {
+        
+        // Lista de tablas de la base de datos
         let schema = Schema([
             Item.self,
+            Movimiento.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
