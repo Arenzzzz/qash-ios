@@ -16,7 +16,8 @@ struct ContentView: View {
                         Image(systemName: movimiento.categoria.icono)
                         Text(movimiento.categoria.rawValue)
                         Spacer()
-                        Text("Q\(movimiento.monto)")
+                        Text(movimiento.monto, format: .currency(code: "GTQ"))
+                            .foregroundStyle(movimiento.esIngreso ? .green : .red)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -38,7 +39,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newMovimiento = Movimiento(monto: 35.00, nota: "Almuerzo", fecha: Date(), esIngreso: false, categoria: .comida)
+            let newMovimiento = Movimiento(monto: 3000.00, nota: "Sueldo", fecha: Date(), esIngreso: true, categoria: .salario)
             modelContext.insert(newMovimiento)
         }
     }
