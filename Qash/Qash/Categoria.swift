@@ -32,6 +32,12 @@ enum Categoria: String, Codable, CaseIterable {
     }
     
     var esIngreso: Bool {
-        return self == .salario || self == .extras
+        switch self {
+        case .salario, .extras:
+            return true
+        case .comida, .despensa, .salidas, .transporte,
+                .prestamos, .gustos, .otros, .emergencias:
+            return false
+        }
     }
 }
