@@ -2,16 +2,21 @@ import SwiftUI
 import SwiftData
 
 struct NuevoMovimientoView: View {
+    // Variables que redibujan la pantalla
     @State private var monto = 0.00
     @State private var nota = ""
     @State private var fecha = Date()
     @State private var categoria = Categoria.comida
     @State private var esIngreso = false
+    
+    // Cerrar y guardar pantallas
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack {
+            
+            // --- FORMULARIOS ---
             Form {
                 // Sección 0: tipo de movimiento
                 Section("Tipo") {
