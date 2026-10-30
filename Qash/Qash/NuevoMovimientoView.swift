@@ -58,6 +58,7 @@ struct NuevoMovimientoView: View {
                     Button("Guardar") {
                         guardar()
                     }
+                    .disabled(monto <= 0)
                 }
             }
             
